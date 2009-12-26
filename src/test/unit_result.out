@@ -1,0 +1,38 @@
+test3
+test 'A'...
+    ABC
+    ABCDEF
+test all...
+    ABC
+    ABCDEF
+    DOUBLE|B|C
+    DOUBLE|U|VV
+    ONEMOREQWERTY
+    QWERTY
+    SEARCHITEM|HUYORCHITEM
+    VALA|I
+    VALA|P
+    VAL|F
+    VAL|H
+    XYZ
+test bad tmp buffer...
+OK!
+test search enumerate...
+    SEARCHITEM|HUYORCHITEM
+    VAL|F
+    VAL|H
+    VALA|I
+    VALA|P
+test find...
+passed!
+test search...
+SEARCH: 4
+FOUND: 'ONEMOREQWERTY'
+test4
+testing VAL...
+    value 8
+    value 15
+test5
+testing DOUBLE...
+    value pair (1, 2)
+    value pair (20, 609)

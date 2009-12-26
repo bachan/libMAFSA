@@ -1,0 +1,54 @@
+
+~ Thu Aug 20 2009 libMAFSA-0.3.16
+	* Bugfix: building of tests was broken
+
+~ Thu Aug 20 2009 libMAFSA-0.3.15
+	* Change: renamed part of string_to_letter interface
+
+~ Tue Aug 18 2009 libMAFSA-0.3.14
+	* Change: nothrow-interface in string_to_letters conversion
+
+~ Thu Aug 06 2009 libMAFSA-0.3.13
+	* Bugfix: name confilict against libmcrypt
+
+~ Mon Jul 20 2009 libMAFSA-0.3.12
+	* Change: compile errors with -Wextra
+
+~ Mon May 18 2009 libMAFSA-0.3.10
+	* Bugfix: (void ** &ptr on x86_64
+
+~ Mon May 18 2009 libMAFSA-0.3.9
+	* Change: MAFSA_str_to_int interface
+	* Change: MAFSA_str_to_int_pair interface
+
+~ Thu May 14 2009 libMAFSA-0.3.8
+	* Change: binary adapters typedefs
+
+~ Wed May 13 2009 libMAFSA-0.3.7
+	* Bugfix: added <sys/types.h> to automaton.h
+
+~ Wed May 13 2009 libMAFSA-0.3.6
+	* Change: added MAFSA_ prefix to C interface
+	* Change: minor save/load changes
+
+~ Sun Apr 26 2009 libMAFSA-0.3.5
+	* Change: added C version libMAFCA.a
+
+~ Wed Mar 18 2009 libMAFSA-0.3.4
+	* Change: added exls test (list of exceptions)
+	* Bugfix: fixed exls print flags
+
+~ Fri Feb 20 2009 libMAFSA-0.3.3
+	* Bugfix: stack.hpp, possible decrement of 0U
+	* Change: remove version from CMake
+
+~ Mon Feb 02 2009 libMAFSA-0.3.2
+	* Bugfix: CMake issues
+	* Bugfix: CORRECT_TEST_RESULT
+	* Bugfix: daciuk::insert, member overdeclaration
+
+~ Thu Jan 29 2009 libMAFSA-0.3.1
+	* Bugfix: remove hardcoded CMAKE_INSTALL_PREFIX
+	* Bugfix: correct test_MAFSA_library and daciuk.* includes
+	* Bugfix: correct version in TARGET_PROPERTIES(MAFSA)
+
