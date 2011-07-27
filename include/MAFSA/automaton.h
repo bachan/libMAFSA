@@ -84,6 +84,17 @@ extern size_t MAFSA_automaton_enumerate_int_pair(MAFSA_automaton ma, const MAFSA
     MAFSA_letter *tmp, size_t sz_tmp, MAFSA_letter delim, int *out, size_t sz_out);
 
 /* 
+ * Enumerates fuzzy 
+ *
+ */
+
+typedef unsigned (MAFSACALL *MAFSA_automaton_fuzzy_callback) (void *user_data,
+    const MAFSA_letter* s, size_t ls, const MAFSA_letter* t, size_t lt);
+
+extern void MAFSA_automaton_fuzzy_enumerate(MAFSA_automaton ma, const MAFSA_letter* l, size_t sz_l, MAFSA_letter* tmp,
+    size_t sz_tmp, void *user_data, MAFSA_automaton_fuzzy_callback sdist, unsigned max_dist, MAFSA_automaton_fuzzy_callback fetcher);
+
+/* 
  * Converts MAFSA ints to real ints.
  *
  */
@@ -93,23 +104,6 @@ extern int MAFSA_automaton_val_to_int      (const MAFSA_letter *l, size_t sz_l, 
 
 extern int MAFSA_automaton_str_to_int_pair (const MAFSA_letter *l, size_t sz_l, MAFSA_letter delim, int *out);
 extern int MAFSA_automaton_val_to_int_pair (const MAFSA_letter *l, size_t sz_l, MAFSA_letter delim, int *out);
-
-/* 
- * RAW (XXX : must be macro definitions)
- *
- */
-
-MAFSA_letter link_get_label(const uint32_t data);
-MAFSA_letter link_set_label(const uint32_t data, const MAFSA_letter v);
-uint32_t link_get_link(const uint32_t data);
-uint32_t link_set_link(const uint32_t data, const uint32_t l);
-int link_is_terminating(const uint32_t data);
-uint32_t link_set_terminating();
-int node_is_final(const uint32_t data);
-uint32_t node_get_children_start(const uint32_t data);
-uint32_t node_set_children_start(const uint32_t data, uint32_t v);
-uint32_t node_set_final(const uint32_t data, int v);
-uint32_t MAFSA_delta(const uint32_t *links, uint32_t state, MAFSA_letter label);
 
 #ifdef __cplusplus
 }

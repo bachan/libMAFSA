@@ -19,24 +19,24 @@ INCLUDE_DIRECTORIES (${IJUDY})
 # It's placed in container of internal automaton building state named reg.
 #
 
-SET (SMAFCA src/MAFSA/automaton.c src/MAFSA/daciuk.c src/MAFSA/pool.c src/MAFSA/stack.c)
+#SET (SMAFCA src/MAFSA/automaton.c src/MAFSA/daciuk.c src/MAFSA/pool.c src/MAFSA/stack.c)
 SET (SMAFSA src/MAFSA/automaton.c)
 
-ADD_LIBRARY (MAFCA STATIC ${SMAFCA})
+#ADD_LIBRARY (MAFCA STATIC ${SMAFCA})
 ADD_LIBRARY (MAFSA STATIC ${SMAFSA})
 
-SET (SMAFCA_EXLS src/test/exls_test.c)
-SET (SMAFCA_UNIT src/test/unit_test.c   src/test/unit_adapter.c)
+#SET (SMAFCA_EXLS src/test/exls_test.c)
+#SET (SMAFCA_UNIT src/test/unit_test.c   src/test/unit_adapter.c)
 SET (SMAFSA_EXLS src/test/exls_test.cpp)
 SET (SMAFSA_UNIT src/test/unit_test.cpp src/test/unit_adapter.c)
 
-ADD_EXECUTABLE (MAFCA_exls ${SMAFCA_EXLS})
-ADD_EXECUTABLE (MAFCA_unit ${SMAFCA_UNIT})
+#ADD_EXECUTABLE (MAFCA_exls ${SMAFCA_EXLS})
+#ADD_EXECUTABLE (MAFCA_unit ${SMAFCA_UNIT})
 ADD_EXECUTABLE (MAFSA_exls ${SMAFSA_EXLS})
 ADD_EXECUTABLE (MAFSA_unit ${SMAFSA_UNIT})
 
-TARGET_LINK_LIBRARIES (MAFCA_exls MAFCA ${LJUDY})
-TARGET_LINK_LIBRARIES (MAFCA_unit MAFCA ${LJUDY})
+#TARGET_LINK_LIBRARIES (MAFCA_exls MAFCA ${LJUDY})
+#TARGET_LINK_LIBRARIES (MAFCA_unit MAFCA ${LJUDY})
 TARGET_LINK_LIBRARIES (MAFSA_exls MAFSA)
 TARGET_LINK_LIBRARIES (MAFSA_unit MAFSA)
 

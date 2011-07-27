@@ -11,57 +11,57 @@
 #include <string.h>
 #include <MAFSA/automaton.h>
 
-MAFSA_letter link_get_label(const uint32_t data)
+static MAFSA_letter link_get_label(const uint32_t data)
 {
     return (MAFSA_letter) (data >> 24);
 }
 
-MAFSA_letter link_set_label(const uint32_t data, const MAFSA_letter v)
+static MAFSA_letter link_set_label(const uint32_t data, const MAFSA_letter v)
 {
     return (MAFSA_letter) ((0x00FFFFFF & data) | (v << 24));
 }
 
-uint32_t link_get_link(const uint32_t data)
+static uint32_t link_get_link(const uint32_t data)
 {
     return data & 0x00FFFFFF;
 }
 
-uint32_t link_set_link(const uint32_t data, const uint32_t l)
+static uint32_t link_set_link(const uint32_t data, const uint32_t l)
 {
     return (0xFF000000 & data) | l;
 }
 
-int link_is_terminating(const uint32_t data)
+static int link_is_terminating(const uint32_t data)
 {
     return data == 0xFF000000;
 }
 
-uint32_t link_set_terminating()
+static uint32_t link_set_terminating()
 {
     return 0xFF000000;
 }
 
-int node_is_final(const uint32_t data)
+static int node_is_final(const uint32_t data)
 {
     return (data & 0x80000000);
 }
 
-uint32_t node_get_children_start(const uint32_t data)
+static uint32_t node_get_children_start(const uint32_t data)
 {
     return data & 0x7FFFFFFF;
 }
 
-uint32_t node_set_children_start(const uint32_t data, uint32_t v)
+static uint32_t node_set_children_start(const uint32_t data, uint32_t v)
 {
     return (data & 0x80000000) | v;
 }
 
-uint32_t node_set_final(const uint32_t data, int v)
+static uint32_t node_set_final(const uint32_t data, int v)
 {
     return v ? (data | 0x80000000) : (data & 0x7FFFFFFF);
 }
 
-uint32_t MAFSA_delta(const uint32_t * links, uint32_t state, MAFSA_letter label)
+static uint32_t MAFSA_delta(const uint32_t * links, uint32_t state, MAFSA_letter label)
 {
     uint32_t links_begin = node_get_children_start(state);
     uint32_t t = links[links_begin];
@@ -276,7 +276,7 @@ extern ssize_t MAFSA_automaton_find(MAFSA_automaton ma, const MAFSA_letter *l, s
             break;
         }
     }
-
+#if 0
     if (i == sz_l && node_is_final(current))
     {
         return 1;
@@ -285,6 +285,11 @@ extern ssize_t MAFSA_automaton_find(MAFSA_automaton ma, const MAFSA_letter *l, s
     {
         return 0;
     }
+#endif
+    if (i < sz_l) return 0;
+    if (!where) return 0;
+    if (!node_is_final(current)) return 0;
+    return 1;
 }
 
 extern ssize_t MAFSA_automaton_search(MAFSA_automaton ma, const MAFSA_letter *l, size_t sz_l,
