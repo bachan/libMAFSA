@@ -16,30 +16,36 @@ static MAFSA_letter link_get_label(const uint32_t data)
     return (MAFSA_letter) (data >> 24);
 }
 
+#if 0
 static MAFSA_letter link_set_label(const uint32_t data, const MAFSA_letter v)
 {
     return (MAFSA_letter) ((0x00FFFFFF & data) | (v << 24));
 }
+#endif
 
 static uint32_t link_get_link(const uint32_t data)
 {
     return data & 0x00FFFFFF;
 }
 
+#if 0
 static uint32_t link_set_link(const uint32_t data, const uint32_t l)
 {
     return (0xFF000000 & data) | l;
 }
+#endif
 
 static int link_is_terminating(const uint32_t data)
 {
     return data == 0xFF000000;
 }
 
+#if 0
 static uint32_t link_set_terminating()
 {
     return 0xFF000000;
 }
+#endif
 
 static int node_is_final(const uint32_t data)
 {
@@ -51,15 +57,19 @@ static uint32_t node_get_children_start(const uint32_t data)
     return data & 0x7FFFFFFF;
 }
 
+#if 0
 static uint32_t node_set_children_start(const uint32_t data, uint32_t v)
 {
     return (data & 0x80000000) | v;
 }
+#endif
 
+#if 0
 static uint32_t node_set_final(const uint32_t data, int v)
 {
     return v ? (data | 0x80000000) : (data & 0x7FFFFFFF);
 }
+#endif
 
 static uint32_t MAFSA_delta(const uint32_t * links, uint32_t state, MAFSA_letter label)
 {
