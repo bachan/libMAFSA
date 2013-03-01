@@ -53,3 +53,9 @@ ENDIF (${CMAKE_SIZEOF_VOID_P} EQUAL 8)
 INSTALL (TARGETS MAFSA DESTINATION ${LIBDIR})
 INSTALL (DIRECTORY include/MAFSA DESTINATION include PATTERN ".*" EXCLUDE)
 
+# test from coda (XXX do we need this?)
+ADD_EXECUTABLE (dic_compiler test/dic_compiler.cpp test/dic_adapter.c)
+TARGET_LINK_LIBRARIES (dic_compiler MAFSA)
+ADD_EXECUTABLE (dic_finder test/dic_finder.c test/dic_adapter.c)
+TARGET_LINK_LIBRARIES (dic_finder MAFSA)
+
