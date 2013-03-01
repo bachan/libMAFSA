@@ -24,9 +24,10 @@ INCLUDE_DIRECTORIES (include)
 
 #SET (SMAFCA src/MAFSA/automaton.c src/MAFSA/daciuk.c src/MAFSA/pool.c src/MAFSA/stack.c)
 SET (SMAFSA src/MAFSA/automaton.c)
+AUX_SOURCE_DIRECTORY (src/MAFSA/adapter SMAFSA_ADAPTER)
 
 #ADD_LIBRARY (MAFCA STATIC ${SMAFCA})
-ADD_LIBRARY (MAFSA STATIC ${SMAFSA})
+ADD_LIBRARY (MAFSA STATIC ${SMAFSA} ${SMAFSA_ADAPTER})
 
 #SET (SMAFCA_EXLS src/test/exls_test.c)
 #SET (SMAFCA_UNIT src/test/unit_test.c   src/test/unit_adapter.c)
