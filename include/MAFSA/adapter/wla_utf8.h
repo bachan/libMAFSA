@@ -26,7 +26,7 @@ extern "C" {
 
 size_t conv_s2l_wla_utf8(const char *s, MAFSA_letter *l, size_t sz);
 size_t conv_l2s_wla_utf8(const MAFSA_letter *l, size_t sz_l, char *s, size_t sz_s);
-	
+
 #ifdef __cplusplus
 }
 #endif

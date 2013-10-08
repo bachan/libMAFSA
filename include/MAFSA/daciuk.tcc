@@ -478,12 +478,11 @@ bool daciuk<max_letter>::load_from_file(char const * fn)
 }
 
 template<int max_letter>
-bool daciuk<max_letter>::save_to_file(char const * fn)
+void daciuk<max_letter>::save_to_vector(std::vector<uint32_t> &index)
 {
     const size_t num_states = reg.size() + 1;
 
     std::map<node*, uint32_t> node2index;
-    std::vector<uint32_t> index;
 
     index.reserve(num_states * (max_letter + 1) + num_states + 2);
 
@@ -554,6 +553,13 @@ bool daciuk<max_letter>::save_to_file(char const * fn)
     }
 
     index[links_number_index] = index.size() - links_begin;
+}
+
+template<int max_letter>
+bool daciuk<max_letter>::save_to_file(const char *fn)
+{
+    std::vector<uint32_t> index;
+    save_to_vector(index);
 
     FILE *fp = fopen(fn, "wb");
     size_t bs;
@@ -564,5 +570,14 @@ bool daciuk<max_letter>::save_to_file(char const * fn)
     fclose(fp);
 
     return true;
+}
+
+template<int max_letter>
+MAFSA_automaton daciuk<max_letter>::save_to_automaton()
+{
+    std::vector<uint32_t> index;
+    save_to_vector(index);
+
+    return MAFSA_automaton_load_from_binary_memo(&index[0], NULL);
 }
 

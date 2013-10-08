@@ -16,6 +16,7 @@
 
 #include <MAFSA/internal.h>
 #include <MAFSA/pool.hpp>
+#include <MAFSA/automaton.h>
 
 namespace MAFSA {
 
@@ -28,8 +29,10 @@ public:
 
     bool insert(const MAFSA_letter * s, size_t sz);
 
-    bool load_from_file(char const * fn);
-    bool save_to_file(char const * fn);
+    bool load_from_file(char const *fn);
+    bool save_to_file(char const *fn);
+
+    MAFSA_automaton save_to_automaton(); /* automaton should be closed with corresponding function from automaton.h */
 
 private:
     struct node
@@ -88,6 +91,8 @@ private:
     void unregister(typename daciuk<max_letter>::node* current);
     typename daciuk<max_letter>::node* add_suffix(typename daciuk<max_letter>::node* base, const MAFSA_letter* str, size_t str_sz, size_t pos);
     bool is_already_there(typename daciuk<max_letter>::word_path& path)const;
+
+    void save_to_vector(std::vector<uint32_t> &index);
 };
 
 #include "daciuk.tcc"

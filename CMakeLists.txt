@@ -16,36 +16,19 @@ SET (FIND_LIBRARY_USE_LIB64_PATHS TRUE)
 SET (CMAKE_FIND_LIBRARY_SUFFIXES ${CMAKE_STATIC_LIBRARY_SUFFIX})
 SET (CMAKE_FIND_LIBRARY_PREFIXES ${CMAKE_STATIC_LIBRARY_PREFIX})
 
-#FIND_PATH    (IJUDY Judy.h)
-#FIND_LIBRARY (LJUDY Judy)
-
 INCLUDE_DIRECTORIES (include)
-#INCLUDE_DIRECTORIES (${IJUDY})
 
-#
-# Building of MAFCA is a stub in case of an error in daciuk implementation.
-# It's placed in container of internal automaton building state named reg.
-#
-
-#SET (SMAFCA src/MAFSA/automaton.c src/MAFSA/daciuk.c src/MAFSA/pool.c src/MAFSA/stack.c)
 SET (SMAFSA src/MAFSA/automaton.c)
 AUX_SOURCE_DIRECTORY (src/MAFSA/adapter SMAFSA_ADAPTER)
 
-#ADD_LIBRARY (MAFCA STATIC ${SMAFCA})
 ADD_LIBRARY (MAFSA STATIC ${SMAFSA} ${SMAFSA_ADAPTER})
 
-#SET (SMAFCA_EXLS src/test/exls_test.c)
-#SET (SMAFCA_UNIT src/test/unit_test.c   src/test/unit_adapter.c)
 SET (SMAFSA_EXLS src/test/exls_test.cpp)
 SET (SMAFSA_UNIT src/test/unit_test.cpp src/test/unit_adapter.c)
 
-#ADD_EXECUTABLE (MAFCA_exls ${SMAFCA_EXLS})
-#ADD_EXECUTABLE (MAFCA_unit ${SMAFCA_UNIT})
 ADD_EXECUTABLE (MAFSA_exls ${SMAFSA_EXLS})
 ADD_EXECUTABLE (MAFSA_unit ${SMAFSA_UNIT})
 
-#TARGET_LINK_LIBRARIES (MAFCA_exls MAFCA ${LJUDY})
-#TARGET_LINK_LIBRARIES (MAFCA_unit MAFCA ${LJUDY})
 TARGET_LINK_LIBRARIES (MAFSA_exls MAFSA)
 TARGET_LINK_LIBRARIES (MAFSA_unit MAFSA)
 
@@ -54,11 +37,10 @@ IF (${CMAKE_SIZEOF_VOID_P} EQUAL 8)
   SET (LIBDIR lib64)
 ENDIF (${CMAKE_SIZEOF_VOID_P} EQUAL 8)
 
-#INSTALL (TARGETS MAFCA DESTINATION ${LIBDIR})
 INSTALL (TARGETS MAFSA DESTINATION ${LIBDIR})
 INSTALL (DIRECTORY include/MAFSA DESTINATION include PATTERN ".*" EXCLUDE)
 
-# test from coda (XXX do we need this?)
+# test from coda (TODO make this more general)
 ADD_EXECUTABLE (dic_compiler test/dic_compiler.cpp test/dic_adapter.c)
 TARGET_LINK_LIBRARIES (dic_compiler MAFSA)
 ADD_EXECUTABLE (dic_finder test/dic_finder.c test/dic_adapter.c)
