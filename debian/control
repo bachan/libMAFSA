@@ -1,0 +1,17 @@
+Source: libmafsa
+Priority: extra
+Maintainer: Sergey Bochenkov <ba4an@yandex.ru>
+Build-Depends: debhelper (>= 7.0.50~), cmake
+Standards-Version: 3.8.4
+Section: libs
+Homepage: https://github.com/bachan/libMAFSA
+#Vcs-Git: git://git.debian.org/collab-maint/libmafsa.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/libmafsa.git;a=summary
+
+Package: libmafsa-dev
+Section: libdevel
+Architecture: any
+Depends: 
+Description: Minimal acyclic finite state automaton
+ Minimal acyclic finite state automaton
+

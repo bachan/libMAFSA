@@ -1,0 +1,5 @@
+libmafsa (0.0.1-1) unstable; urgency=low
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- unknown <bachan@farm.itim.vn>  Thu, 17 Oct 2013 17:40:22 +0700
