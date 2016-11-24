@@ -1,8 +1,14 @@
+libmafsa (0.1.0-2) stable; urgency=low
+
+  * version bump
+
+ -- Sergey Bochenkov <ba4an@yandex.ru>  Thu, 24 Nov 2016 18:54:55 +0700
+
 libmafsa (0.1.0-1) stable; urgency=low
 
   * install into lib
 
- -- Alexander Pankov <bachan@farm.itim.vn>  Mon, 05 Oct 2015 10:54:55 +0700
+ -- Sergey Bochenkov <ba4an@yandex.ru>  Mon, 05 Oct 2015 10:54:55 +0700
 
 libmafsa (0.1.0-0) stable; urgency=low
 
