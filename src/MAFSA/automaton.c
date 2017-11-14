@@ -248,18 +248,6 @@ extern void MAFSA_automaton_close(MAFSA_automaton ma)
     {
         free(ma->ptr_nodes);
         free(ma->ptr_links);
-
-#if 0
-        if (ma->ptr_nodes)
-        {
-            free(ma->ptr_nodes);
-        }
-
-        if (ma->ptr_links)
-        {
-            free(ma->ptr_links);
-        }
-#endif
     }
 
     free(ma);
@@ -286,19 +274,11 @@ extern ssize_t MAFSA_automaton_find(MAFSA_automaton ma, const MAFSA_letter *l, s
             break;
         }
     }
-#if 0
-    if (i == sz_l && node_is_final(current))
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
-#endif
+
     if (i < sz_l) return 0;
     if (!where) return 0;
     if (!node_is_final(current)) return 0;
+
     return 1;
 }
 
